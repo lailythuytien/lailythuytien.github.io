@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lai Ly Thuy Tien - Personal Portfolio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            gold: '#f59e0b',
+                            goldHover: '#d97706',
+                            teal: '#14b8a6',
+                            tealHover: '#0d9488',
+                            darkBg: '#18181b',
+                            darkCard: '#27272a',
+                            darkBorder: '#3f3f46',
+                            lightBg: '#f8fafc',
+                            lightCard: '#ffffff',
+                            lightBorder: '#e2e8f0'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .teal-link {
+            color: #0d9488;
+            transition: color 0.2s ease, text-decoration 0.2s ease;
+        }
+        .dark .teal-link {
+            color: #2dd4bf;
+        }
+        .teal-link:hover {
+            color: #0f766e;
+            text-decoration: underline;
+        }
+        .dark .teal-link:hover {
+            color: #5eead4;
+        }
+        .pink-link {
+            color: #db2777;
+            transition: color 0.2s ease;
+        }
+        .dark .pink-link {
+            color: #ec4899;
+        }
+        .pink-link:hover {
+            color: #be185d;
+        }
+        .dark .pink-link:hover {
+            color: #f472b6;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.05);
+        }
+        .dark ::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.2);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #94a3b8;
+            border-radius: 4px;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #52525b;
+        }
+        .counter-box {
+            font-family: 'JetBrains Mono', monospace;
+            letter-spacing: 0.2em;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-[#18181b] dark:text-zinc-200 min-h-screen flex flex-col font-sans transition-colors duration-300">
+
+    <!-- Top Navigation Bar -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-white/80 border-b border-slate-200 dark:bg-[#18181b]/80 dark:border-zinc-800/60">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+            <!-- Brand / Name -->
+            <a href="#" onclick="switchTab('home')" class="flex items-center gap-2.5 font-bold text-lg text-slate-900 dark:text-zinc-100 group">
+                <div class="w-7 h-7 rounded-lg bg-gradient-to-tr from-amber-500 to-teal-400 flex items-center justify-center text-zinc-950 font-black text-xs shadow-md group-hover:scale-105 transition-transform">
+                    LL
+                </div>
+                <span>Lai Ly Thuy Tien</span>
+            </a>
+
+            <!-- Nav Links -->
+            <nav class="flex items-center gap-1 sm:gap-6 text-sm font-medium">
+                <button onclick="switchTab('works')" id="nav-works" class="nav-btn px-3 py-1.5 rounded-md text-slate-600 hover:text-teal-600 dark:text-zinc-400 dark:hover:text-teal-400 transition-colors">
+                    Works
+                </button>
+                <button onclick="switchTab('posts')" id="nav-posts" class="nav-btn px-3 py-1.5 rounded-md text-slate-600 hover:text-teal-600 dark:text-zinc-400 dark:hover:text-teal-400 transition-colors">
+                    Posts
+                </button>
+                <button onclick="switchTab('news')" id="nav-news" class="nav-btn px-3 py-1.5 rounded-md text-slate-600 hover:text-teal-600 dark:text-zinc-400 dark:hover:text-teal-400 transition-colors">
+                    News
+                </button>
+                <button onclick="switchTab('resume')" id="nav-resume" class="nav-btn px-3 py-1.5 rounded-md text-slate-600 hover:text-teal-600 dark:text-zinc-400 dark:hover:text-teal-400 transition-colors">
+                    Resume/CV
+                </button>
+            </nav>
+
+            <!-- Theme Toggle Button -->
+            <button id="theme-toggle" onclick="toggleTheme()" class="px-3 py-1.5 rounded-xl bg-purple-100 text-purple-700 dark:bg-purple-600/20 dark:text-purple-300 flex items-center gap-2 hover:bg-purple-200 dark:hover:bg-purple-600/30 transition-all shadow-sm text-xs font-semibold" title="Toggle Dark/Bright Mode">
+                <i id="theme-icon" class="fa-solid fa-moon text-sm"></i>
+                <span id="theme-text" class="hidden sm:inline">Dark</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-4xl w-full mx-auto px-4 sm:px-6 pt-6 pb-16">
+        
+        <!-- Header Hero Banner Image -->
+        <div class="relative w-full h-48 sm:h-64 md:h-72 rounded-2xl overflow-hidden shadow-xl border border-slate-200 dark:border-zinc-800 mb-6 group">
+            <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=1200&auto=format&fit=crop" 
+                 alt="Header Banner - AI & Medicine Visual" 
+                 class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 opacity-90">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/40 dark:from-[#18181b] via-transparent to-black/30"></div>
+            <div class="absolute bottom-3 right-4 text-xs font-mono text-zinc-200 bg-black/50 backdrop-blur-sm px-2.5 py-1 rounded-md">
+                <i class="fa-solid fa-dna text-teal-400 mr-1.5"></i> AI + Medicine & Computer Vision
+            </div>
+        </div>
+
+        <!-- Quote / Motto Pill Box -->
+        <div class="mb-8 w-full bg-white dark:bg-zinc-800/60 backdrop-blur-sm border border-slate-200 dark:border-zinc-700/50 rounded-xl py-3 px-6 text-center shadow-sm">
+            <p class="text-sm sm:text-base font-medium text-slate-700 dark:text-zinc-300 italic">
+                Thought + Full🧠🫀
+            </p>
+        </div>
+
+        <!-- ================= TAB: HOME / OVERVIEW ================= -->
+        <div id="tab-home" class="tab-content space-y-10">
+            <!-- Profile Info & Avatar Header -->
+            <div class="flex flex-col-reverse sm:flex-row justify-between items-start sm:items-center gap-6">
+                <div class="space-y-2 max-w-xl">
+                    <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+                        Lai Ly Thuy Tien
+                    </h1>
+                    <p class="text-sm sm:text-base text-slate-600 dark:text-zinc-400 leading-relaxed">
+                        High School Student @ <span class="font-semibold text-slate-800 dark:text-zinc-200">Experimental High School HCMUE</span>
+                        <br>
+                        Advanced International Program
+                        <br>
+                        Specialized in Mathematics, Physics & English
+                        <br>
+                        Intended Major: <span class="text-teal-600 dark:text-teal-400 font-semibold">Computer Science & Artificial Intelligence</span>
+                    </p>
+                </div>
+                <!-- Avatar circle -->
+                <div class="relative shrink-0">
+                    <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-full p-1 bg-gradient-to-tr from-amber-500 via-teal-400 to-purple-600 shadow-xl">
+                        <div class="w-full h-full rounded-full bg-white dark:bg-zinc-900 flex items-center justify-center overflow-hidden">
+                            <img src="https://api.dicebear.com/7.x/bottts/svg?seed=TienLai&backgroundColor=18181b" 
+                                 alt="Lai Ly Thuy Tien Avatar" 
+                                 class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    <span class="absolute bottom-1 right-1 w-4 h-4 bg-emerald-500 border-2 border-white dark:border-zinc-900 rounded-full" title="Active & Open for Collaboration"></span>
+                </div>
+            </div>
+
+            <!-- Works Bio Section -->
+            <section class="space-y-4">
+                <h2 class="text-xl font-bold text-slate-900 dark:text-white underline decoration-slate-300 dark:decoration-zinc-700 underline-offset-8">
+                    Works & Background
+                </h2>
+                <p class="text-slate-700 dark:text-zinc-300 leading-relaxed text-sm sm:text-base">
+                    I am a high school senior based in Ho Chi Minh City, Vietnam. I am deeply passionate about 
+                    <a href="#works" onclick="switchTab('works')" class="teal-link font-medium">Computer Vision</a>, 
+                    <a href="#works" onclick="switchTab('works')" class="teal-link font-medium">Machine Learning</a>, and their transformative applications in 
+                    <a href="#works" onclick="switchTab('works')" class="teal-link font-medium">Biomedical AI & Healthcare</a>.
+                </p>
+
+                <!-- Action CTA Buttons -->
+                <div class="flex flex-wrap items-center gap-3 pt-2">
+                    <button onclick="switchTab('works')" class="px-5 py-2.5 rounded-lg bg-amber-500 hover:bg-amber-600 text-zinc-950 font-semibold text-sm transition-all shadow-md flex items-center gap-2 group">
+                        <span>My portfolio</span>
+                        <i class="fa-solid fa-chevron-right text-xs group-hover:translate-x-0.5 transition-transform"></i>
+                    </button>
+                    <button onclick="switchTab('resume')" class="px-5 py-2.5 rounded-lg bg-amber-500 hover:bg-amber-600 text-zinc-950 font-semibold text-sm transition-all shadow-md flex items-center gap-2 group">
+                        <span>My resume</span>
+                        <i class="fa-solid fa-chevron-right text-xs group-hover:translate-x-0.5 transition-transform"></i>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Bio Timeline List -->
+            <section class="space-y-4 pt-4 border-t border-slate-200 dark:border-zinc-800">
+                <h2 class="text-lg font-bold text-slate-900 dark:text-white">
+                    Bio & Timeline
+                </h2>
+                <div class="space-y-2.5 text-sm sm:text-base font-normal">
+                    <div class="flex items-start gap-4">
+                        <span class="font-bold text-slate-900 dark:text-zinc-100 w-12 shrink-0">2027</span>
+                        <span class="text-slate-700 dark:text-zinc-300">Expected Graduation from Experimental High School HCMUE (Advanced International Program. Specialized in Mathematics, Physics & English).</span>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <span class="font-bold text-slate-900 dark:text-zinc-100 w-12 shrink-0">2026</span>
+                        <span class="text-slate-700 dark:text-zinc-300">Top 20 Finalist @ Vietnam Artificial Intelligence Olympiad (VAIO 2026).</span>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <span class="font-bold text-slate-900 dark:text-zinc-100 w-12 shrink-0">2025</span>
+                        <span class="text-slate-700 dark:text-zinc-300">Third Prize (Top 6 National Finalist) @ AI Challenge Central-Central Highlands.</span>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <span class="font-bold text-slate-900 dark:text-zinc-100 w-12 shrink-0">2025</span>
+                        <span class="text-slate-700 dark:text-zinc-300">Third Prize @ Vietnam Olympiad in Artificial Intelligence (VOAI 2025).</span>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <span class="font-bold text-slate-900 dark:text-zinc-100 w-12 shrink-0">2025</span>
+                        <span class="text-slate-700 dark:text-zinc-300">Bronze Medal (Rank 13) @ Vietnam AI Championship (VAIC 2025).</span>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <span class="font-bold text-slate-900 dark:text-zinc-100 w-12 shrink-0">2026</span>
+                        <span class="text-slate-700 dark:text-zinc-300">Dynamic Science Ambassador @ Science Film Festival 2025 in Vietnam (Goethe-Institut).</span>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <span class="font-bold text-slate-900 dark:text-zinc-100 w-12 shrink-0">2025</span>
+                        <span class="text-slate-700 dark:text-zinc-300">Mentee @ Fulbright STEM Mentorship Program 2025 — Researched AI models (ResNet, YOLOv11/12, RT-DETR) for Agricultural & Plant Disease Detection.</span>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <span class="font-bold text-slate-900 dark:text-zinc-100 w-12 shrink-0">2025</span>
+                        <span class="text-slate-700 dark:text-zinc-300">Member @ AI Young Talent Academy, Institute for AI Innovation and Societal Impact.</span>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <span class="font-bold text-slate-900 dark:text-zinc-100 w-12 shrink-0">2024</span>
+                        <span class="text-slate-700 dark:text-zinc-300">Vice President @ STEM Club, Experimental High School HCMUE.</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- I ♥ Section -->
+            <section class="space-y-3 pt-4 border-t border-slate-200 dark:border-zinc-800">
+                <h2 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                    I <i class="fa-solid fa-heart text-red-500 text-sm"></i>
+                </h2>
+                <p class="text-slate-700 dark:text-zinc-300 leading-relaxed text-sm sm:text-base">
+                    <span class="teal-link">Computer Vision</span>, <span class="teal-link">Machine Learning</span>, <span class="teal-link">AI in Medicine</span>, 
+                    Languages (<span class="text-teal-600 dark:text-teal-400 font-semibold">Vietnamese [Native]</span>, <span class="text-teal-600 dark:text-teal-400 font-semibold">English</span>, <span class="text-teal-600 dark:text-teal-400 font-semibold">Mandarin Chinese</span>), 
+                    Hobbies (<span class="text-slate-900 dark:text-zinc-100 font-semibold">Chess</span>, <span class="text-slate-900 dark:text-zinc-100 font-semibold">Swimming</span>).
+                </p>
+            </section>
+
+            <!-- Reach me through -->
+            <section class="space-y-4 pt-4 border-t border-slate-200 dark:border-zinc-800">
+                <h2 class="text-lg font-bold text-slate-900 dark:text-white underline decoration-slate-300 dark:decoration-zinc-700 underline-offset-8">
+                    Reach me through
+                </h2>
+                <div class="space-y-2.5 text-sm sm:text-base font-medium">
+                    <div>
+                        <a href="https://github.com/lailythuytien" target="_blank" rel="noopener noreferrer" class="pink-link inline-flex items-center gap-2.5">
+                            <i class="fa-brands fa-github text-lg w-5"></i>
+                            <span>lailythuytien - Github</span>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="mailto:lailythuytien@gmail.com" class="pink-link inline-flex items-center gap-2.5">
+                            <i class="fa-solid fa-envelope text-lg w-5"></i>
+                            <span>lailythuytien@gmail.com</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Check out blog posts CTA button -->
+            <div class="text-center pt-6">
+                <button onclick="switchTab('posts')" class="px-6 py-2.5 rounded-lg bg-amber-500 hover:bg-amber-600 text-zinc-950 font-bold text-sm shadow-lg transition-all inline-flex items-center gap-2">
+                    <span>Check out my blog posts</span>
+                    <i class="fa-solid fa-chevron-right text-xs"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- ================= TAB: WORKS / PROJECTS ================= -->
+        <div id="tab-works" class="tab-content hidden space-y-8">
+            <div class="border-b border-slate-200 dark:border-zinc-800 pb-4">
+                <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
+                    Works & Featured Projects
+                </h1>
+                <p class="text-sm text-slate-500 dark:text-zinc-400 mt-1">Key web architecture, research projects, and deep learning models.</p>
+            </div>
+
+            <!-- Project 1: STEM Center Web Platforms -->
+            <article class="bg-white dark:bg-zinc-900/80 rounded-2xl p-6 border border-slate-200 dark:border-zinc-800 shadow-sm space-y-4 hover:border-teal-500/50 transition-all">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                    <span class="text-xs font-semibold px-3 py-1 rounded-full bg-teal-500/10 text-teal-700 dark:bg-teal-500/20 dark:text-teal-400 border border-teal-500/20">
+                        Full-Stack & Web Architecture
+                    </span>
+                    <span class="text-xs font-mono text-slate-500 dark:text-zinc-400">2025 – Present</span>
+                </div>
+                <h2 class="text-xl font-bold text-slate-900 dark:text-white">
+                    STEM Center Web Platforms & Systems
+                </h2>
+                <p class="text-xs font-mono text-amber-600 dark:text-amber-400 font-semibold">Role: Founder & Lead Developer</p>
+
+                <ul class="space-y-2 text-sm text-slate-700 dark:text-zinc-300 list-disc list-inside leading-relaxed">
+                    <li><strong class="text-slate-900 dark:text-zinc-100">Web & Database Architecture:</strong> Designed and deployed two full-stack web platforms using HTML5, CSS3, JavaScript (ES6+), and Firebase:</li>
+                    <li class="ml-4 list-none flex items-start gap-2">
+                        <i class="fa-solid fa-angle-right text-teal-500 mt-1 text-xs"></i>
+                        <span><strong>STEM Center Official Website:</strong> Official web platform to showcase technical products, host event updates, and highlight club activities.</span>
+                    </li>
+                    <li class="ml-4 list-none flex items-start gap-2">
+                        <i class="fa-solid fa-angle-right text-teal-500 mt-1 text-xs"></i>
+                        <span><strong>Lab Inventory System:</strong> Internal management web app integrated with Firebase Realtime Database to track and organize lab equipment.</span>
+                    </li>
+                    <li><strong class="text-slate-900 dark:text-zinc-100">Security & Deployment:</strong> Applied Firebase Security Rules, HTTP Referrer API restrictions, and domain authorization to secure database endpoints; deployed via GitHub Pages and Firebase Hosting.</li>
+                </ul>
+
+                <!-- Live Demo Links -->
+                <div class="pt-2 flex flex-wrap gap-3">
+                    <a href="https://ththstem.github.io/STEM_THTHDHSP_PAGE/" target="_blank" rel="noopener noreferrer" 
+                       class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-teal-600 hover:bg-teal-700 text-white font-semibold text-xs transition-colors shadow">
+                        <i class="fa-solid fa-globe"></i> STEM Center Website Demo
+                    </a>
+                    <a href="https://ththstem.github.io/STEM_THTHDHSP_QUANLYDUNGCU.github.io/" target="_blank" rel="noopener noreferrer" 
+                       class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-100 dark:bg-zinc-800 hover:bg-slate-200 dark:hover:bg-zinc-700 text-slate-800 dark:text-zinc-200 border border-slate-300 dark:border-zinc-700 font-semibold text-xs transition-colors">
+                        <i class="fa-solid fa-boxes-stacked"></i> Lab Inventory App Demo
+                    </a>
+                </div>
+            </article>
+
+            <!-- Project 2: AI Plant & Strawberry Disease Classification -->
+            <article class="bg-white dark:bg-zinc-900/80 rounded-2xl p-6 border border-slate-200 dark:border-zinc-800 shadow-sm space-y-4 hover:border-amber-500/50 transition-all">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                    <span class="text-xs font-semibold px-3 py-1 rounded-full bg-amber-500/10 text-amber-700 dark:bg-amber-500/20 dark:text-amber-400 border border-amber-500/20">
+                        Computer Vision & AI
+                    </span>
+                    <span class="text-xs font-mono text-slate-500 dark:text-zinc-400">2025</span>
+                </div>
+                <h2 class="text-xl font-bold text-slate-900 dark:text-white">
+                    Refined Residual Strawberry Disease Classification
+                </h2>
+                <p class="text-xs font-mono text-amber-600 dark:text-amber-400 font-semibold">Role: Mentee @ Fulbright 2025 STEM Mentorship Program</p>
+
+                <p class="text-sm text-slate-700 dark:text-zinc-300 leading-relaxed">
+                    Developed deep learning Computer Vision architectures for automated strawberry disease detection and agricultural analysis.
+                </p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-center py-2">
+                    <div class="bg-slate-50 dark:bg-zinc-800/50 rounded-lg p-3 border border-slate-200 dark:border-zinc-700/50">
+                        <div class="text-xs text-slate-500 dark:text-zinc-400 font-mono">mAP@50</div>
+                        <div class="text-lg font-bold text-amber-600 dark:text-amber-400">80.3%</div>
+                    </div>
+                    <div class="bg-slate-50 dark:bg-zinc-800/50 rounded-lg p-3 border border-slate-200 dark:border-zinc-700/50">
+                        <div class="text-xs text-slate-500 dark:text-zinc-400 font-mono">Precision</div>
+                        <div class="text-lg font-bold text-teal-600 dark:text-teal-400">85.6%</div>
+                    </div>
+                    <div class="bg-slate-50 dark:bg-zinc-800/50 rounded-lg p-3 border border-slate-200 dark:border-zinc-700/50">
+                        <div class="text-xs text-slate-500 dark:text-zinc-400 font-mono">Recall</div>
+                        <div class="text-lg font-bold text-purple-600 dark:text-purple-400">86.7%</div>
+                    </div>
+                </div>
+
+                <ul class="space-y-1.5 text-sm text-slate-700 dark:text-zinc-300 list-disc list-inside">
+                    <li>Models evaluated: PyTorch, ResNet101, Faster R-CNN, YOLOv11/v12, and RT-DETR.</li>
+                    <li>Applied Grad-CAM for model interpretability and class activation mapping.</li>
+                    <li>Leveraged TorchMetrics for continuous quantitative evaluation and validation metrics.</li>
+                </ul>
+            </article>
+
+            <!-- Project 3: Sustainable Paper Recycling SDGs -->
+            <article class="bg-white dark:bg-zinc-900/80 rounded-2xl p-6 border border-slate-200 dark:border-zinc-800 shadow-sm space-y-4 hover:border-emerald-500/50 transition-all">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                    <span class="text-xs font-semibold px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-400 border border-emerald-500/20">
+                        STEM & Sustainability Research
+                    </span>
+                    <span class="text-xs font-mono text-slate-500 dark:text-zinc-400">2025</span>
+                </div>
+                <h2 class="text-xl font-bold text-slate-900 dark:text-white">
+                    Sustainable Paper Recycling Project "HAPPY PAPER - HAPPY PLANET"
+                </h2>
+                <p class="text-xs font-mono text-amber-600 dark:text-amber-400 font-semibold">Role: Content Lead @ High School Students Conference on SDGs (Taiwan)</p>
+
+                <ul class="space-y-2 text-sm text-slate-700 dark:text-zinc-300 list-disc list-inside">
+                    <li>Co-invented plantable seed paper crafted from discarded school textbooks and presented research report to 400+ international participants.</li>
+                    <li>Analyzed 375 research survey responses and spearheaded hands-on recycling workshops for high school delegates.</li>
+                </ul>
+            </article>
+        </div>
+
+        <!-- ================= TAB: POSTS ================= -->
+        <div id="tab-posts" class="tab-content hidden space-y-6">
+            <div class="border-b border-slate-200 dark:border-zinc-800 pb-4">
+                <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
+                    Blog Posts
+                </h1>
+                <p class="text-sm text-slate-500 dark:text-zinc-400 mt-1">Articles, tutorials</p>
+            </div>
+
+            <div class="bg-white dark:bg-zinc-900/50 border border-dashed border-slate-300 dark:border-zinc-800 rounded-2xl p-12 text-center space-y-4">
+                <div class="w-16 h-16 mx-auto rounded-full bg-slate-100 dark:bg-zinc-800 flex items-center justify-center text-amber-500 text-2xl">
+                    <i class="fa-solid fa-pen-nib"></i>
+                </div>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white">Articles Coming Soon</h3>
+                <div class="pt-2">
+                    <button onclick="switchTab('home')" class="px-4 py-2 rounded-lg bg-slate-200 dark:bg-zinc-800 hover:bg-slate-300 dark:hover:bg-zinc-700 text-xs font-semibold text-slate-700 dark:text-zinc-300">
+                        ← Back to Overview
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= TAB: NEWS ================= -->
+        <div id="tab-news" class="tab-content hidden space-y-6">
+            <div class="border-b border-slate-200 dark:border-zinc-800 pb-4">
+                <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
+                    Latest News & Updates
+                </h1>
+                <p class="text-sm text-slate-500 dark:text-zinc-400 mt-1">Announcements, Olympiad awards, and event highlights.</p>
+            </div>
+
+            <!-- News Feed Items -->
+            <div class="space-y-4">
+                <div class="p-5 rounded-xl bg-white dark:bg-zinc-900/80 border border-slate-200 dark:border-zinc-800 shadow-sm space-y-2">
+                    <div class="flex items-center justify-between text-xs text-slate-500 dark:text-zinc-400">
+                        <span class="text-amber-600 dark:text-amber-400 font-bold"><i class="fa-solid fa-trophy mr-1"></i> Olympiad Award</span>
+                        <span class="font-mono">2026</span>
+                    </div>
+                    <h3 class="text-base font-bold text-slate-900 dark:text-white">Top 20 Candidates Finalist @ Vietnam Artificial Intelligence Olympiad (VAIO 2026)</h3>
+                </div>
+
+                <div class="p-5 rounded-xl bg-white dark:bg-zinc-900/80 border border-slate-200 dark:border-zinc-800 shadow-sm space-y-2">
+                    <div class="flex items-center justify-between text-xs text-slate-500 dark:text-zinc-400">
+                        <span class="text-teal-600 dark:text-teal-400 font-bold"><i class="fa-solid fa-award mr-1"></i> National Olympiad</span>
+                        <span class="font-mono">2025</span>
+                    </div>
+                    <h3 class="text-base font-bold text-slate-900 dark:text-white">Third Prize (Top 6 National Finalist) @ AI Challenge, Informatics Olympiad in the Central-Central Highlands</h3>
+                </div>
+
+                <div class="p-5 rounded-xl bg-white dark:bg-zinc-900/80 border border-slate-200 dark:border-zinc-800 shadow-sm space-y-2">
+                    <div class="flex items-center justify-between text-xs text-slate-500 dark:text-zinc-400">
+                        <span class="text-teal-600 dark:text-teal-400 font-bold"><i class="fa-solid fa-award mr-1"></i> National Olympiad</span>
+                        <span class="font-mono">2025</span>
+                    </div>
+                    <h3 class="text-base font-bold text-slate-900 dark:text-white">Third Prize @ Vietnam Olympiad in Artificial Intelligence (VOAI 2025)</h3>
+                </div>
+
+                <div class="p-5 rounded-xl bg-white dark:bg-zinc-900/80 border border-slate-200 dark:border-zinc-800 shadow-sm space-y-2">
+                    <div class="flex items-center justify-between text-xs text-slate-500 dark:text-zinc-400">
+                        <span class="text-amber-600 dark:text-amber-400 font-bold"><i class="fa-solid fa-trophy mr-1"></i> National Competition</span>
+                        <span class="font-mono">2025</span>
+                    </div>
+                    <h3 class="text-base font-bold text-slate-900 dark:text-white">Bronze Medal (Rank 13) @ Vietnam AI Championship (VAIC 2025)</h3>
+                </div>
+
+                <div class="p-5 rounded-xl bg-white dark:bg-zinc-900/80 border border-slate-200 dark:border-zinc-800 shadow-sm space-y-2">
+                    <div class="flex items-center justify-between text-xs text-slate-500 dark:text-zinc-400">
+                        <span class="text-purple-600 dark:text-purple-400 font-bold"><i class="fa-solid fa-earth-americas mr-1"></i> International Conference</span>
+                        <span class="font-mono">2025</span>
+                    </div>
+                    <h3 class="text-base font-bold text-slate-900 dark:text-white">Merit Prize @ High School Students' Conference on SDGs (Taiwan)</h3>
+                    <p class="text-xs text-slate-600 dark:text-zinc-300">Co-authored sustainable seed paper research and presented in Taiwan to over 400 international participants.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= TAB: RESUME / CV ================= -->
+        <div id="tab-resume" class="tab-content hidden space-y-8">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-200 dark:border-zinc-800 pb-4 gap-4">
+                <div>
+                    <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
+                        Curriculum Vitae / Resume
+                    </h1>
+                    <p class="text-sm text-slate-500 dark:text-zinc-400 mt-1">Lai Ly Thuy Tien — Full Academic & Technical Resume</p>
+                </div>
+                <a href="mailto:lailythuytien@gmail.com?subject=CV%20Request" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-teal-500 hover:bg-teal-600 text-zinc-950 font-bold text-xs transition-colors shrink-0 shadow">
+                    <i class="fa-solid fa-download"></i> Download / Request PDF
+                </a>
+            </div>
+
+            <!-- Rendered CV Document Card -->
+            <div class="bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-2xl p-6 sm:p-10 shadow-xl space-y-8 text-sm">
+                
+                <!-- CV Header -->
+                <div class="border-b border-slate-200 dark:border-zinc-800 pb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                    <div>
+                        <h2 class="text-2xl sm:text-3xl font-black tracking-wide text-slate-900 dark:text-white">LAI LY THUY TIEN</h2>
+                        <p class="text-teal-600 dark:text-teal-400 font-medium text-xs mt-1">Ho Chi Minh City, Vietnam</p>
+                    </div>
+                    <div class="space-y-1 text-xs text-slate-600 dark:text-zinc-300 font-mono">
+                        <div><i class="fa-solid fa-envelope text-teal-500 mr-2"></i>lailythuytien@gmail.com</div>
+                        <div><i class="fa-brands fa-github text-teal-500 mr-2"></i>github.com/lailythuytien</div>
+                    </div>
+                </div>
+
+                <!-- CV Section: Education -->
+                <div class="space-y-3">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400 border-b border-slate-200 dark:border-zinc-800 pb-1 flex items-center gap-2">
+                        <i class="fa-solid fa-graduation-cap"></i> Education
+                    </h3>
+                    <div class="flex flex-col sm:flex-row justify-between items-start gap-2">
+                        <div class="space-y-1">
+                            <div class="font-bold text-slate-900 dark:text-white text-base">Experimental High School HCMUE</div>
+                            <div class="text-xs text-slate-700 dark:text-zinc-300">Advanced International Program</div>
+                            <div class="text-xs text-slate-700 dark:text-zinc-300">Specialized in Mathematics, Physics & English</div>
+                            <div class="text-xs text-slate-500 dark:text-zinc-400 pt-0.5">GPA: 9th Grade: 9.5 | 10th Grade: 8.9 | 11th Grade: 8.9</div>
+                            <div class="text-xs text-teal-600 dark:text-teal-400 font-semibold pt-0.5">Intended Major: Computer Science & Artificial Intelligence</div>
+                        </div>
+                        <div class="text-xs font-mono text-slate-500 dark:text-zinc-400 shrink-0">June 2027 (Expected Graduation)</div>
+                    </div>
+                </div>
+
+                <!-- CV Section: Honors & Awards -->
+                <div class="space-y-3">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400 border-b border-slate-200 dark:border-zinc-800 pb-1 flex items-center gap-2">
+                        <i class="fa-solid fa-trophy"></i> Honors & Awards
+                    </h3>
+                    <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-zinc-300">
+                        <li class="flex justify-between items-start gap-4">
+                            <span>• <strong>Third Prize (Top 6 National Finalist)</strong> - AI Challenge, Informatics Olympiad in the Central-Central Highlands, National Level</span>
+                            <span class="font-mono text-slate-500 dark:text-zinc-400 shrink-0">2025</span>
+                        </li>
+                        <li class="flex justify-between items-start gap-4">
+                            <span>• <strong>Third Prize</strong> - Vietnam Olympiad in Artificial Intelligence (VOAI), National Level</span>
+                            <span class="font-mono text-slate-500 dark:text-zinc-400 shrink-0">2025</span>
+                        </li>
+                        <li class="flex justify-between items-start gap-4">
+                            <span>• <strong>Bronze Medal (Rank 13)</strong> - Vietnam AI Championship (VAIC 2025), National Level</span>
+                            <span class="font-mono text-slate-500 dark:text-zinc-400 shrink-0">2025</span>
+                        </li>
+                        <li class="flex justify-between items-start gap-4">
+                            <span>• <strong>Top 20 Candidates Finalist</strong> - Vietnam Artificial Intelligence Olympiad (VAIO), National Level</span>
+                            <span class="font-mono text-slate-500 dark:text-zinc-400 shrink-0">2026</span>
+                        </li>
+                        <li class="flex justify-between items-start gap-4">
+                            <span>• <strong>Merit Prize</strong> - High School Students' Conference on Inquiry and Practice in Relation to SDGs, International Group in Taiwan</span>
+                            <span class="font-mono text-slate-500 dark:text-zinc-400 shrink-0">2025</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- CV Section: Projects & Research -->
+                <div class="space-y-4">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400 border-b border-slate-200 dark:border-zinc-800 pb-1 flex items-center gap-2">
+                        <i class="fa-solid fa-flask"></i> Projects & Research
+                    </h3>
+
+                    <!-- Project A -->
+                    <div class="space-y-1.5">
+                        <div class="flex justify-between items-start gap-2">
+                            <div class="font-bold text-slate-900 dark:text-white text-sm">Refined Residual Strawberry Disease Classification (AI Project)</div>
+                            <div class="font-mono text-xs text-slate-500 dark:text-zinc-400 shrink-0">2025</div>
+                        </div>
+                        <div class="text-xs text-amber-600 dark:text-amber-400 font-medium italic">Mentee Fulbright 2025 STEM Mentorship Program</div>
+                        <ul class="list-disc list-inside text-xs text-slate-700 dark:text-zinc-300 space-y-1 pl-1">
+                            <li>Developed Computer Vision models using PyTorch (ResNet101, Faster R-CNN, YOLOv11/v12, RT-DETR) for strawberry disease detection, achieving mAP@50 80.3%, Precision = 85.6%, Recall = 86.7%.</li>
+                            <li>Applied Grad-CAM for model interpretability and TorchMetrics for quantitative performance evaluation.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Project B -->
+                    <div class="space-y-1.5 pt-2">
+                        <div class="flex justify-between items-start gap-2">
+                            <div class="font-bold text-slate-900 dark:text-white text-sm">STEM Center Web Platforms & Systems</div>
+                            <div class="font-mono text-xs text-slate-500 dark:text-zinc-400 shrink-0">2025 – Present</div>
+                        </div>
+                        <div class="text-xs text-amber-600 dark:text-amber-400 font-medium italic">Founder & Lead Developer</div>
+                        <ul class="list-disc list-inside text-xs text-slate-700 dark:text-zinc-300 space-y-1 pl-1">
+                            <li>
+                                <strong>Web & Database Architecture:</strong> Designed and deployed two full-stack web platforms using HTML5, CSS3, JavaScript (ES6+), and Firebase:
+                                <ul class="list-circle list-inside pl-5 space-y-0.5 mt-0.5 text-slate-600 dark:text-zinc-400">
+                                    <li>– <strong>STEM Center Official Website:</strong> Official web platform to showcase technical products, host event updates, and highlight club activities (Live Demo).</li>
+                                    <li>– <strong>Lab Inventory System:</strong> Internal management web app integrated with Firebase Realtime Database to track and organize lab equipment.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Security & Deployment:</strong> Applied Firebase Security Rules, HTTP Referrer API restrictions, and domain authorization to secure database endpoints; deployed via GitHub Pages and Firebase Hosting.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Project C -->
+                    <div class="space-y-1.5 pt-2">
+                        <div class="flex justify-between items-start gap-2">
+                            <div class="font-bold text-slate-900 dark:text-white text-sm">Sustainable Paper Recycling Project "HAPPY PAPER - HAPPY PLANET" (STEM Project)</div>
+                            <div class="font-mono text-xs text-slate-500 dark:text-zinc-400 shrink-0">2025</div>
+                        </div>
+                        <div class="text-xs text-amber-600 dark:text-amber-400 font-medium italic">Content Lead High School Students Conference on SDGs, International Group Taiwan</div>
+                        <ul class="list-disc list-inside text-xs text-slate-700 dark:text-zinc-300 space-y-1 pl-1">
+                            <li><strong>Research & Reporting:</strong> Co-invented plantable seed paper from discarded textbooks and authored the scientific research report presented to 400+ international participants.</li>
+                            <li><strong>Data & Workshops:</strong> Collected and analyzed 375 survey responses via Google Forms & Excel; led hands-on recycling workshops for 40 participants.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- CV Section: Extracurricular Activities -->
+                <div class="space-y-4">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400 border-b border-slate-200 dark:border-zinc-800 pb-1 flex items-center gap-2">
+                        <i class="fa-solid fa-users"></i> Extracurricular Activities
+                    </h3>
+
+                    <!-- Activity 1 -->
+                    <div class="space-y-1.5">
+                        <div class="flex justify-between items-start gap-2">
+                            <div class="font-bold text-slate-900 dark:text-white text-sm">Vice President STEM Club, Experimental High School HCMUE</div>
+                            <div class="font-mono text-xs text-slate-500 dark:text-zinc-400 shrink-0">2024 – Present</div>
+                        </div>
+                        <ul class="list-disc list-inside text-xs text-slate-700 dark:text-zinc-300 space-y-1 pl-1">
+                            <li><strong>Leadership & Strategic Partnerships:</strong> Collaborated with the USAC Club (HCMUS, VNU-HCM) to organize astronomy and 3D printing training; partnered with inter-school STEM clubs to host 1 large-scale Science Fair and school-wide STEM product exhibitions.</li>
+                            <li><strong>Technical Training & Maintenance:</strong> Directly trained members on Laser Engraving and microphone soldering/refurbishment.</li>
+                            <li><strong>Hands-on Workshops:</strong> Organized interactive STEM workshops for students, including scented candle making, flower dyeing, and eco-friendly paper recycling.</li>
+                            <li><strong>Web Development:</strong> Built and maintained two web platforms using HTML, JS, CSS, and Firebase for school lab inventory management and club project showcases.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Activity 2 -->
+                    <div class="space-y-1.5 pt-2">
+                        <div class="flex justify-between items-start gap-2">
+                            <div class="font-bold text-slate-900 dark:text-white text-sm">Dynamic Science Ambassador @ Science Film Festival 2025 in Vietnam (Goethe-Institut)</div>
+                            <div class="font-mono text-xs text-slate-500 dark:text-zinc-400 shrink-0">2026</div>
+                        </div>
+                        <ul class="list-disc list-inside text-xs text-slate-700 dark:text-zinc-300 space-y-1 pl-1">
+                            <li>Promoted scientific literacy and sustainability through film screenings, educational activities, and youth representation in science communication.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Activity 3 -->
+                    <div class="space-y-1.5 pt-2">
+                        <div class="flex justify-between items-start gap-2">
+                            <div class="font-bold text-slate-900 dark:text-white text-sm">Member @ AI Young Talent Academy, Institute for AI Innovation and Societal Impact</div>
+                            <div class="font-mono text-xs text-slate-500 dark:text-zinc-400 shrink-0">2025 – 2026</div>
+                        </div>
+                        <ul class="list-disc list-inside text-xs text-slate-700 dark:text-zinc-300 space-y-1 pl-1">
+                            <li>Participated in online AI sharing sessions (via Zoom), lab research visits, and received 1-1 career orientation mentorship from teachers and senior students.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Activity 4 -->
+                    <div class="space-y-1.5 pt-2">
+                        <div class="flex justify-between items-start gap-2">
+                            <div class="font-bold text-slate-900 dark:text-white text-sm">Volunteer @ Red Phoenix Flower Campaign (Science Team)</div>
+                            <div class="font-mono text-xs text-slate-500 dark:text-zinc-400 shrink-0">2025</div>
+                        </div>
+                        <ul class="list-disc list-inside text-xs text-slate-700 dark:text-zinc-300 space-y-1 pl-1">
+                            <li>Designed hands-on STEM products and interactive activities to engage local youth in community science programs.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- CV Section: Skills & Interests -->
+                <div class="space-y-3">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400 border-b border-slate-200 dark:border-zinc-800 pb-1 flex items-center gap-2">
+                        <i class="fa-solid fa-gears"></i> Skills & Interests
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+                        <div>
+                            <span class="font-bold text-slate-900 dark:text-white block mb-1">Technical Skills</span>
+                            <p class="text-slate-700 dark:text-zinc-300 leading-relaxed">Python (Pandas, Matplotlib), MS Office (Advanced Word - MOS, PowerPoint, Proficient Excel), HTML5/CSS3/JavaScript, Firebase.</p>
+                        </div>
+                        <div>
+                            <span class="font-bold text-slate-900 dark:text-white block mb-1">Languages</span>
+                            <p class="text-slate-700 dark:text-zinc-300 leading-relaxed">Vietnamese (Native), English, Mandarin Chinese.</p>
+                        </div>
+                        <div>
+                            <span class="font-bold text-slate-900 dark:text-white block mb-1">Hobbies</span>
+                            <p class="text-slate-700 dark:text-zinc-300 leading-relaxed">Chess, Swimming.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="mt-auto border-t border-slate-200 dark:border-zinc-800 py-8 text-center text-xs text-slate-500 dark:text-zinc-500">
+        <div class="max-w-4xl mx-auto px-4 space-y-4">
+            
+            <!-- Brain Made / Retro Counter Box -->
+            <div class="flex flex-col items-center justify-center gap-2">
+                <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-slate-200 dark:bg-zinc-800/80 border border-slate-300 dark:border-zinc-700 text-[10px] font-mono text-slate-700 dark:text-zinc-300">
+                    <i class="fa-solid fa-brain text-amber-500"></i>
+                    <span>BRAIN MADE</span>
+                </div>
+                <!-- Interactive Counter -->
+                <div class="counter-box bg-white dark:bg-zinc-900 border border-slate-300 dark:border-zinc-800 px-4 py-1.5 rounded-md text-amber-600 dark:text-amber-400 font-bold text-sm tracking-widest shadow-inner">
+                    0 4 0 9
+                </div>
+            </div>
+
+            <p>© 2026 Lai Ly Thuy Tien. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Tab Switcher Logic
+        function switchTab(tabId) {
+            // Hide all contents
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(el => el.classList.add('hidden'));
+
+            // Deactivate all nav buttons
+            const navBtns = document.querySelectorAll('.nav-btn');
+            navBtns.forEach(btn => {
+                btn.classList.remove('text-teal-600', 'dark:text-teal-400', 'font-bold', 'underline', 'decoration-teal-500', 'underline-offset-4');
+            });
+
+            // Show target content
+            const target = document.getElementById('tab-' + tabId);
+            if (target) {
+                target.classList.remove('hidden');
+            }
+
+            // Highlight target nav
+            const targetNav = document.getElementById('nav-' + tabId);
+            if (targetNav) {
+                targetNav.classList.add('text-teal-600', 'dark:text-teal-400', 'font-bold', 'underline', 'decoration-teal-500', 'underline-offset-4');
+            }
+
+            // Scroll smoothly to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Enhanced Theme Toggle Logic (Dark / Bright Mode with Persistence)
+        function updateThemeUI(isDark) {
+            const icon = document.getElementById('theme-icon');
+            const themeText = document.getElementById('theme-text');
+            if (isDark) {
+                if (icon) icon.className = 'fa-solid fa-moon text-purple-300';
+                if (themeText) themeText.textContent = 'Dark';
+            } else {
+                if (icon) icon.className = 'fa-solid fa-sun text-amber-500';
+                if (themeText) themeText.textContent = 'Bright';
+            }
+        }
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                updateThemeUI(false);
+            } else {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                updateThemeUI(true);
+            }
+        }
+
+        // Initialize theme on load
+        (function initTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const html = document.documentElement;
+            if (savedTheme === 'light') {
+                html.classList.remove('dark');
+                updateThemeUI(false);
+            } else {
+                html.classList.add('dark');
+                updateThemeUI(true);
+            }
+        })();
+
+        // Default setup on page load
+        window.onload = function() {
+            switchTab('home');
+        };
+    </script>
+</body>
+</html>
