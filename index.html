@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lai Ly Thuy Tien - Personal Portfolio</title>
+    <title>Lai Ly Thuy Tien - Computer Science/ AI</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -98,73 +98,57 @@
 <body class="bg-slate-50 text-slate-800 dark:bg-[#18181b] dark:text-zinc-200 min-h-screen flex flex-col font-sans transition-colors duration-300">
     
     <!-- Top Navigation Bar -->
-    <!-- Top Navigation Bar (Chuẩn 1 nút Theme Toggle, sát lề trái) -->
-      <header class="sticky top-0 z-50 backdrop-blur-md bg-white/90 border-b border-slate-200 dark:bg-[#18181b]/90 dark:border-zinc-800/60 transition-colors duration-200">
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-white/90 border-b border-slate-200 dark:bg-[#18181b]/90 dark:border-zinc-800/60 transition-colors duration-200">
         <div class="w-full px-4 sm:px-6 lg:px-8">
-          <div class="flex items-center justify-between h-16">
-            
-            <!-- Brand Logo & Name (Đẩy sát mép trái) -->
-            <a href="#" onclick="switchTab('home')" class="flex items-center gap-2.5 font-bold text-lg text-slate-900 dark:text-zinc-100 group">
-              <img src="cute cat.jpg" alt="Logo" class="w-8 h-8 rounded-full object-cover shrink-0">
-              <span>Lai Ly Thuy Tien</span>
-            </a>
-    
-            <!-- Desktop Links (Màn hình lớn) -->
-            <div class="hidden md:flex items-center space-x-6 text-sm font-medium">
-              <button onclick="switchTab('works')" class="text-slate-600 dark:text-zinc-300 hover:text-amber-500 transition-colors">Works</button>
-              <button onclick="switchTab('posts')" class="text-slate-600 dark:text-zinc-300 hover:text-amber-500 transition-colors">Posts</button>
-              <button onclick="switchTab('news')" class="text-slate-600 dark:text-zinc-300 hover:text-amber-500 transition-colors">News</button>
-              <button onclick="switchTab('resume')" class="text-slate-600 dark:text-zinc-300 hover:text-amber-500 transition-colors">Resume/CV</button>
+            <div class="flex items-center justify-between h-16">
+                
+                <!-- Brand Logo & Name -->
+                <a href="#" onclick="switchTab('home')" class="flex items-center gap-2.5 font-bold text-lg text-slate-900 dark:text-zinc-100 group">
+                    <img src="cute cat.jpg" alt="Logo" class="w-8 h-8 rounded-full object-cover shrink-0" onerror="this.src='https://placehold.co/100x100/f59e0b/ffffff?text=LL'">
+                    <span>Lai Ly Thuy Tien</span>
+                </a>
+        
+                <!-- Desktop Links with Publications added -->
+                <div class="hidden md:flex items-center space-x-6 text-sm font-medium">
+                    <button onclick="switchTab('works')" id="nav-works" class="nav-btn text-slate-600 dark:text-zinc-300 hover:text-teal-500 transition-colors">Works</button>
+                    <button onclick="switchTab('publications')" id="nav-publications" class="nav-btn text-slate-600 dark:text-zinc-300 hover:text-teal-500 transition-colors">Publications</button>
+                    <button onclick="switchTab('posts')" id="nav-posts" class="nav-btn text-slate-600 dark:text-zinc-300 hover:text-teal-500 transition-colors">Posts</button>
+                    <button onclick="switchTab('news')" id="nav-news" class="nav-btn text-slate-600 dark:text-zinc-300 hover:text-teal-500 transition-colors">News</button>
+                    <button onclick="switchTab('resume')" id="nav-resume" class="nav-btn text-slate-600 dark:text-zinc-300 hover:text-teal-500 transition-colors">Resume/CV</button>
+                </div>
+        
+                <div class="flex items-center gap-3">
+                    <!-- Theme Toggle Button -->
+                    <button id="theme-toggle" onclick="toggleTheme()" class="px-3 py-1.5 rounded-xl bg-purple-100 text-purple-700 dark:bg-purple-600/20 dark:text-purple-300 flex items-center gap-2 hover:bg-purple-200 dark:hover:bg-purple-600/30 transition-all shadow-sm text-xs font-semibold" title="Toggle Dark/Bright Mode">
+                        <i id="theme-icon" class="fa-solid fa-moon text-sm"></i>
+                        <span id="theme-text" class="hidden sm:inline">Dark</span>
+                    </button>
+        
+                    <!-- Mobile Hamburger Button -->
+                    <button id="mobile-menu-btn" type="button" aria-label="Toggle menu" class="md:hidden text-slate-600 dark:text-zinc-300 hover:text-teal-500 focus:outline-none p-1.5 rounded-lg">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+
             </div>
-    
-            <div class="flex items-center gap-3">
-              <!-- Theme Toggle Button (Duy nhất 1 nút) -->
-              <button id="theme-toggle" onclick="toggleTheme()" class="px-3 py-1.5 rounded-xl bg-purple-100 text-purple-700 dark:bg-purple-600/20 dark:text-purple-300 flex items-center gap-2 hover:bg-purple-200 dark:hover:bg-purple-600/30 transition-all shadow-sm text-xs font-semibold" title="Toggle Dark/Bright Mode">
-                <i id="theme-icon" class="fa-solid fa-moon text-sm"></i>
-                <span id="theme-text" class="hidden sm:inline">Dark</span>
-              </button>
-    
-              <!-- Mobile Hamburger Button (Màn hình điện thoại) -->
-              <button id="mobile-menu-btn" type="button" aria-label="Toggle menu" class="md:hidden text-slate-600 dark:text-zinc-300 hover:text-amber-500 focus:outline-none p-1.5 rounded-lg">
-                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                </svg>
-              </button>
-            </div>
-    
-          </div>
         </div>
     
         <!-- Mobile Dropdown Menu -->
         <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 dark:border-zinc-800 bg-white dark:bg-[#18181b] px-4 pt-2 pb-4 space-y-2 text-sm font-medium">
-          <button onclick="switchTab('works'); closeMobileMenu()" class="block w-full text-left py-2 px-3 rounded-md text-slate-700 dark:text-zinc-200 hover:bg-amber-500/10 hover:text-amber-500 transition-colors">Works</button>
-          <button onclick="switchTab('posts'); closeMobileMenu()" class="block w-full text-left py-2 px-3 rounded-md text-slate-700 dark:text-zinc-200 hover:bg-amber-500/10 hover:text-amber-500 transition-colors">Posts</button>
-          <button onclick="switchTab('news'); closeMobileMenu()" class="block w-full text-left py-2 px-3 rounded-md text-slate-700 dark:text-zinc-200 hover:bg-amber-500/10 hover:text-amber-500 transition-colors">News</button>
-          <button onclick="switchTab('resume'); closeMobileMenu()" class="block w-full text-left py-2 px-3 rounded-md text-slate-700 dark:text-zinc-200 hover:bg-amber-500/10 hover:text-amber-500 transition-colors">Resume/CV</button>
+            <button onclick="switchTab('works'); closeMobileMenu()" class="block w-full text-left py-2 px-3 rounded-md text-slate-700 dark:text-zinc-200 hover:bg-amber-500/10 hover:text-amber-500 transition-colors">Works</button>
+            <button onclick="switchTab('publications'); closeMobileMenu()" class="block w-full text-left py-2 px-3 rounded-md text-slate-700 dark:text-zinc-200 hover:bg-amber-500/10 hover:text-amber-500 transition-colors">Publications</button>
+            <button onclick="switchTab('posts'); closeMobileMenu()" class="block w-full text-left py-2 px-3 rounded-md text-slate-700 dark:text-zinc-200 hover:bg-amber-500/10 hover:text-amber-500 transition-colors">Posts</button>
+            <button onclick="switchTab('news'); closeMobileMenu()" class="block w-full text-left py-2 px-3 rounded-md text-slate-700 dark:text-zinc-200 hover:bg-amber-500/10 hover:text-amber-500 transition-colors">News</button>
+            <button onclick="switchTab('resume'); closeMobileMenu()" class="block w-full text-left py-2 px-3 rounded-md text-slate-700 dark:text-zinc-200 hover:bg-amber-500/10 hover:text-amber-500 transition-colors">Resume/CV</button>
         </div>
-      </header>
-    
-      <script>
-        const menuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-    
-        menuBtn?.addEventListener('click', () => {
-          mobileMenu?.classList.toggle('hidden');
-        });
-    
-        function closeMobileMenu() {
-          mobileMenu?.classList.add('hidden');
-        }
-      </script>
-
     </header>
 
     <!-- Full-Width Header Hero Banner Image -->
     <div class="w-full px-2 sm:px-6 md:px-12 pt-4 sm:pt-6">
         <div class="relative w-full h-48 sm:h-64 md:h-80 rounded-2xl overflow-hidden shadow-xl border border-slate-200 dark:border-zinc-800 group">
-            <img src="crazy.png" alt="Banner" class="w-full h-full object-cover">
-                 alt="LAI LY THUY TIEN" 
-                 class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 opacity-90">
+            <img src="crazy.png" alt="LAI LY THUY TIEN Banner" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 opacity-90" onerror="this.src='https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=1200&auto=format&fit=crop'">
             <div class="absolute inset-0 bg-gradient-to-t from-slate-900/40 dark:from-[#18181b] via-transparent to-black/30"></div>
             <div class="absolute bottom-3 right-4 text-xs font-mono text-zinc-200 bg-black/50 backdrop-blur-sm px-2.5 py-1 rounded-md">
                 <i class="fa-solid fa-dna text-teal-400 mr-1.5"></i> LAI LY THUY TIEN
@@ -205,7 +189,8 @@
                         <div class="w-full h-full rounded-full bg-white dark:bg-zinc-900 flex items-center justify-center overflow-hidden">
                             <img src="fairy.jpg" 
                                  alt="Lai Ly Thuy Tien Avatar" 
-                                 class="w-full h-full object-cover">
+                                 class="w-full h-full object-cover"
+                                 onerror="this.src='https://api.dicebear.com/7.x/bottts/svg?seed=TienLai&backgroundColor=18181b'">
                         </div>
                     </div>
                     <span class="absolute bottom-1 right-1 w-4 h-4 bg-emerald-500 border-2 border-white dark:border-zinc-900 rounded-full" title="Active & Open for Collaboration"></span>
@@ -224,74 +209,33 @@
                     <a href="#works" onclick="switchTab('works')" class="teal-link font-medium">Biomedical AI & Healthcare</a>.
                 </p>
 
-                <!-- Action CTA Buttons -->
+                <!-- Embedded Languages & Hobbies -->
+                <div class="p-4 rounded-xl bg-white dark:bg-zinc-900/60 border border-slate-200 dark:border-zinc-800 space-y-2 text-sm">
+                    <div class="flex flex-wrap items-center gap-2">
+                        <span class="font-bold text-slate-900 dark:text-white flex items-center gap-1.5 min-w-[100px]">
+                            <i class="fa-solid fa-language text-teal-500"></i> Languages:
+                        </span>
+                        <span class="text-slate-700 dark:text-zinc-300">Vietnamese (Native), English, Mandarin Chinese</span>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2 pt-1 border-t border-slate-100 dark:border-zinc-800/60">
+                        <span class="font-bold text-slate-900 dark:text-white flex items-center gap-1.5 min-w-[100px]">
+                            <i class="fa-solid fa-gamepad text-amber-500"></i> Hobbies:
+                        </span>
+                        <span class="text-slate-700 dark:text-zinc-300">Chess, Swimming</span>
+                    </div>
+                </div>
+
+                <!-- Action CTA Button (My Portfolio removed) -->
                 <div class="flex flex-wrap items-center gap-3 pt-2">
-                    <button onclick="switchTab('works')" class="px-5 py-2.5 rounded-lg bg-amber-500 hover:bg-amber-600 text-zinc-950 font-semibold text-sm transition-all shadow-md flex items-center gap-2 group">
-                        <span>My portfolio</span>
-                        <i class="fa-solid fa-chevron-right text-xs group-hover:translate-x-0.5 transition-transform"></i>
-                    </button>
                     <button onclick="switchTab('resume')" class="px-5 py-2.5 rounded-lg bg-amber-500 hover:bg-amber-600 text-zinc-950 font-semibold text-sm transition-all shadow-md flex items-center gap-2 group">
                         <span>My resume</span>
                         <i class="fa-solid fa-chevron-right text-xs group-hover:translate-x-0.5 transition-transform"></i>
                     </button>
+                    <a href="#contact-section" class="px-5 py-2.5 rounded-lg bg-teal-600 hover:bg-teal-700 text-white font-semibold text-sm transition-all shadow-md flex items-center gap-2 group">
+                        <i class="fa-solid fa-paper-plane text-xs"></i>
+                        <span>Contact me</span>
+                    </a>
                 </div>
-            </section>
-
-            <!-- Bio Timeline List -->
-            <section class="space-y-4 pt-4 border-t border-slate-200 dark:border-zinc-800">
-                <h2 class="text-lg font-bold text-slate-900 dark:text-white">
-                    Bio & Timeline
-                </h2>
-                <div class="space-y-2.5 text-sm sm:text-base font-normal">
-                    <div class="flex items-start gap-4">
-                        <span class="font-bold text-slate-900 dark:text-zinc-100 w-12 shrink-0">2027</span>
-                        <span class="text-slate-700 dark:text-zinc-300">Expected Graduation from Experimental High School HCMUE (Advanced International Program. Specialized in Mathematics, Physics & English).</span>
-                    </div>
-                    <div class="flex items-start gap-4">
-                        <span class="font-bold text-slate-900 dark:text-zinc-100 w-12 shrink-0">2026</span>
-                        <span class="text-slate-700 dark:text-zinc-300">Top 20 Finalist @ Vietnam Artificial Intelligence Olympiad (VAIO 2026).</span>
-                    </div>
-                    <div class="flex items-start gap-4">
-                        <span class="font-bold text-slate-900 dark:text-zinc-100 w-12 shrink-0">2025</span>
-                        <span class="text-slate-700 dark:text-zinc-300">Third Prize (Top 6 National Finalist) @ AI Challenge Central-Central Highlands.</span>
-                    </div>
-                    <div class="flex items-start gap-4">
-                        <span class="font-bold text-slate-900 dark:text-zinc-100 w-12 shrink-0">2025</span>
-                        <span class="text-slate-700 dark:text-zinc-300">Third Prize @ Vietnam Olympiad in Artificial Intelligence (VOAI 2025).</span>
-                    </div>
-                    <div class="flex items-start gap-4">
-                        <span class="font-bold text-slate-900 dark:text-zinc-100 w-12 shrink-0">2025</span>
-                        <span class="text-slate-700 dark:text-zinc-300">Bronze Medal (Rank 13) @ Vietnam AI Championship (VAIC 2025).</span>
-                    </div>
-                    <div class="flex items-start gap-4">
-                        <span class="font-bold text-slate-900 dark:text-zinc-100 w-12 shrink-0">2026</span>
-                        <span class="text-slate-700 dark:text-zinc-300">Dynamic Science Ambassador @ Science Film Festival 2025 in Vietnam (Goethe-Institut).</span>
-                    </div>
-                    <div class="flex items-start gap-4">
-                        <span class="font-bold text-slate-900 dark:text-zinc-100 w-12 shrink-0">2025</span>
-                        <span class="text-slate-700 dark:text-zinc-300">Mentee @ Fulbright STEM Mentorship Program 2025 — Refined Residual Strawberry Disease Classification (AI Project)</span>
-                    </div>
-                    <div class="flex items-start gap-4">
-                        <span class="font-bold text-slate-900 dark:text-zinc-100 w-12 shrink-0">2025</span>
-                        <span class="text-slate-700 dark:text-zinc-300">Member @ AI Young Talent Academy, Institute for AI Innovation and Societal Impact.</span>
-                    </div>
-                    <div class="flex items-start gap-4">
-                        <span class="font-bold text-slate-900 dark:text-zinc-100 w-12 shrink-0">2024</span>
-                        <span class="text-slate-700 dark:text-zinc-300">Vice President @ STEM Club, Experimental High School HCMUE.</span>
-                    </div>
-                </div>
-            </section>
-
-            <!-- I ♥ Section -->
-            <section class="space-y-3 pt-4 border-t border-slate-200 dark:border-zinc-800">
-                <h2 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                    I <i class="fa-solid fa-heart text-red-500 text-sm"></i>
-                </h2>
-                <p class="text-slate-700 dark:text-zinc-300 leading-relaxed text-sm sm:text-base">
-                    <span class="teal-link">Computer Vision</span>, <span class="teal-link">Machine Learning</span>, <span class="teal-link">AI in Medicine</span>, 
-                    Languages (<span class="text-teal-600 dark:text-teal-400 font-semibold">Vietnamese [Native]</span>, <span class="text-teal-600 dark:text-teal-400 font-semibold">English</span>, <span class="text-teal-600 dark:text-teal-400 font-semibold">Mandarin Chinese</span>), 
-                    Hobbies (<span class="text-slate-900 dark:text-zinc-100 font-semibold">Chess</span>, <span class="text-slate-900 dark:text-zinc-100 font-semibold">Swimming</span>).
-                </p>
             </section>
 
             <!-- Reach me through -->
@@ -315,13 +259,57 @@
                 </div>
             </section>
 
-            <!-- Check out blog posts CTA button -->
-            <div class="text-center pt-6">
-                <button onclick="switchTab('posts')" class="px-6 py-2.5 rounded-lg bg-amber-500 hover:bg-amber-600 text-zinc-950 font-bold text-sm shadow-lg transition-all inline-flex items-center gap-2">
-                    <span>Check out my blog posts</span>
-                    <i class="fa-solid fa-chevron-right text-xs"></i>
-                </button>
-            </div>
+            <!-- Contact Section (Replaced blog post button) -->
+            <section id="contact-section" class="space-y-6 pt-6 border-t border-slate-200 dark:border-zinc-800">
+                <div class="border-b border-slate-200 dark:border-zinc-800 pb-3">
+                    <h2 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                        <i class="fa-solid fa-envelope-open-text text-amber-500"></i> Get In Touch / Contact Me
+                    </h2>
+                    <p class="text-xs text-slate-500 dark:text-zinc-400 mt-1">Send a message directly to my email: <strong class="text-teal-600 dark:text-teal-400">lailythuytien@gmail.com</strong></p>
+                </div>
+
+                <form id="contact-form" action="https://formsubmit.co/lailythuytien@gmail.com" method="POST" class="bg-white dark:bg-zinc-900/90 border border-slate-200 dark:border-zinc-800 rounded-2xl p-6 shadow-md space-y-4">
+                    <!-- FormSubmit Configuration -->
+                    <input type="hidden" name="_subject" value="New Portfolio Message for Lai Ly Thuy Tien">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label for="sender-name" class="block text-xs font-semibold text-slate-700 dark:text-zinc-300 mb-1">Your Name</label>
+                            <input type="text" id="sender-name" name="name" required placeholder="John Doe" 
+                                   class="w-full px-3.5 py-2 rounded-xl bg-slate-50 dark:bg-zinc-800/80 border border-slate-300 dark:border-zinc-700 text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all">
+                        </div>
+                        <div>
+                            <label for="sender-email" class="block text-xs font-semibold text-slate-700 dark:text-zinc-300 mb-1">Your Email</label>
+                            <input type="email" id="sender-email" name="email" required placeholder="you@example.com" 
+                                   class="w-full px-3.5 py-2 rounded-xl bg-slate-50 dark:bg-zinc-800/80 border border-slate-300 dark:border-zinc-700 text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="sender-subject" class="block text-xs font-semibold text-slate-700 dark:text-zinc-300 mb-1">Subject</label>
+                        <input type="text" id="sender-subject" name="subject" required placeholder="Collaboration / Inquiry" 
+                               class="w-full px-3.5 py-2 rounded-xl bg-slate-50 dark:bg-zinc-800/80 border border-slate-300 dark:border-zinc-700 text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all">
+                    </div>
+
+                    <div>
+                        <label for="sender-message" class="block text-xs font-semibold text-slate-700 dark:text-zinc-300 mb-1">Message Content</label>
+                        <textarea id="sender-message" name="message" rows="4" required placeholder="Hello Tien, I would like to reach out regarding..." 
+                                  class="w-full px-3.5 py-2 rounded-xl bg-slate-50 dark:bg-zinc-800/80 border border-slate-300 dark:border-zinc-700 text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all resize-none"></textarea>
+                    </div>
+
+                    <div class="flex items-center justify-between pt-2">
+                        <button type="submit" class="px-6 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-zinc-950 font-bold text-sm shadow-md transition-all inline-flex items-center gap-2">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            <span>Send Message Directly</span>
+                        </button>
+                        <a href="mailto:lailythuytien@gmail.com" class="text-xs text-teal-600 dark:text-teal-400 hover:underline">
+                            Or open email app directly
+                        </a>
+                    </div>
+                </form>
+            </section>
         </div>
 
         <!-- ================= TAB: WORKS / PROJECTS ================= -->
@@ -333,7 +321,46 @@
                 <p class="text-sm text-slate-500 dark:text-zinc-400 mt-1">Key web architecture, research projects, and deep learning models.</p>
             </div>
 
-            <!-- Project 1: STEM Center Web Platforms -->
+            <!-- Project 1: An Explainable YOLOv9 Framework for Strawberry Disease Detection -->
+            <article class="bg-white dark:bg-zinc-900/80 rounded-2xl p-6 border border-slate-200 dark:border-zinc-800 shadow-sm space-y-4 hover:border-amber-500/50 transition-all">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                    <span class="text-xs font-semibold px-3 py-1 rounded-full bg-amber-500/10 text-amber-700 dark:bg-amber-500/20 dark:text-amber-400 border border-amber-500/20 flex items-center gap-1.5">
+                        <i class="fa-solid fa-scroll text-amber-500"></i> Scopus-Indexed Conference Paper
+                    </span>
+                    <span class="text-xs font-mono text-slate-500 dark:text-zinc-400">2025</span>
+                </div>
+                <h2 class="text-xl font-bold text-slate-900 dark:text-white">
+                    An Explainable YOLOv9 Framework for Strawberry Disease Detection
+                </h2>
+                <p class="text-xs font-mono text-amber-600 dark:text-amber-400 font-semibold">Mentee – Fulbright 2025 STEM Mentorship Program</p>
+
+                <p class="text-sm text-slate-700 dark:text-zinc-300 leading-relaxed">
+                    Developed Computer Vision models for automated strawberry disease detection and agricultural disease diagnosis.
+                </p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-center py-2">
+                    <div class="bg-slate-50 dark:bg-zinc-800/50 rounded-lg p-3 border border-slate-200 dark:border-zinc-700/50">
+                        <div class="text-xs text-slate-500 dark:text-zinc-400 font-mono">mAP@50</div>
+                        <div class="text-lg font-bold text-amber-600 dark:text-amber-400">80.3%</div>
+                    </div>
+                    <div class="bg-slate-50 dark:bg-zinc-800/50 rounded-lg p-3 border border-slate-200 dark:border-zinc-700/50">
+                        <div class="text-xs text-slate-500 dark:text-zinc-400 font-mono">Precision</div>
+                        <div class="text-lg font-bold text-teal-600 dark:text-teal-400">85.6%</div>
+                    </div>
+                    <div class="bg-slate-50 dark:bg-zinc-800/50 rounded-lg p-3 border border-slate-200 dark:border-zinc-700/50">
+                        <div class="text-xs text-slate-500 dark:text-zinc-400 font-mono">Recall</div>
+                        <div class="text-lg font-bold text-purple-600 dark:text-purple-400">86.7%</div>
+                    </div>
+                </div>
+
+                <ul class="space-y-2 text-sm text-slate-700 dark:text-zinc-300 list-disc list-inside leading-relaxed">
+                    <li>Developed Computer Vision models using PyTorch (ResNet101, Faster R-CNN, YOLOv11/v12, RT-DETR) for strawberry disease detection, achieving mAP@50 = 80.3%, Precision = 85.6%, Recall = 86.7%.</li>
+                    <li>Applied Grad-CAM for model interpretability and TorchMetrics for quantitative performance evaluation.</li>
+                    <li><strong class="text-emerald-600 dark:text-emerald-400">Accepted:</strong> Accepted at The Eighth International Conference on Artificial Intelligence and Computational Intelligence, a Scopus indexed conference.</li>
+                </ul>
+            </article>
+
+            <!-- Project 2: STEM Center Web Platforms -->
             <article class="bg-white dark:bg-zinc-900/80 rounded-2xl p-6 border border-slate-200 dark:border-zinc-800 shadow-sm space-y-4 hover:border-teal-500/50 transition-all">
                 <div class="flex flex-wrap items-center justify-between gap-2">
                     <span class="text-xs font-semibold px-3 py-1 rounded-full bg-teal-500/10 text-teal-700 dark:bg-teal-500/20 dark:text-teal-400 border border-teal-500/20">
@@ -372,45 +399,6 @@
                 </div>
             </article>
 
-            <!-- Project 2: AI Plant & Strawberry Disease Classification -->
-            <article class="bg-white dark:bg-zinc-900/80 rounded-2xl p-6 border border-slate-200 dark:border-zinc-800 shadow-sm space-y-4 hover:border-amber-500/50 transition-all">
-                <div class="flex flex-wrap items-center justify-between gap-2">
-                    <span class="text-xs font-semibold px-3 py-1 rounded-full bg-amber-500/10 text-amber-700 dark:bg-amber-500/20 dark:text-amber-400 border border-amber-500/20">
-                        Computer Vision & AI
-                    </span>
-                    <span class="text-xs font-mono text-slate-500 dark:text-zinc-400">2025</span>
-                </div>
-                <h2 class="text-xl font-bold text-slate-900 dark:text-white">
-                    Refined Residual Strawberry Disease Classification
-                </h2>
-                <p class="text-xs font-mono text-amber-600 dark:text-amber-400 font-semibold">Role: Mentee @ Fulbright 2025 STEM Mentorship Program</p>
-
-                <p class="text-sm text-slate-700 dark:text-zinc-300 leading-relaxed">
-                    Developed deep learning Computer Vision architectures for automated strawberry disease detection and agricultural analysis.
-                </p>
-
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-center py-2">
-                    <div class="bg-slate-50 dark:bg-zinc-800/50 rounded-lg p-3 border border-slate-200 dark:border-zinc-700/50">
-                        <div class="text-xs text-slate-500 dark:text-zinc-400 font-mono">mAP@50</div>
-                        <div class="text-lg font-bold text-amber-600 dark:text-amber-400">80.3%</div>
-                    </div>
-                    <div class="bg-slate-50 dark:bg-zinc-800/50 rounded-lg p-3 border border-slate-200 dark:border-zinc-700/50">
-                        <div class="text-xs text-slate-500 dark:text-zinc-400 font-mono">Precision</div>
-                        <div class="text-lg font-bold text-teal-600 dark:text-teal-400">85.6%</div>
-                    </div>
-                    <div class="bg-slate-50 dark:bg-zinc-800/50 rounded-lg p-3 border border-slate-200 dark:border-zinc-700/50">
-                        <div class="text-xs text-slate-500 dark:text-zinc-400 font-mono">Recall</div>
-                        <div class="text-lg font-bold text-purple-600 dark:text-purple-400">86.7%</div>
-                    </div>
-                </div>
-
-                <ul class="space-y-1.5 text-sm text-slate-700 dark:text-zinc-300 list-disc list-inside">
-                    <li>Models evaluated: PyTorch, ResNet101, Faster R-CNN, YOLOv11/v12, and RT-DETR.</li>
-                    <li>Applied Grad-CAM for model interpretability and class activation mapping.</li>
-                    <li>Leveraged TorchMetrics for continuous quantitative evaluation and validation metrics.</li>
-                </ul>
-            </article>
-
             <!-- Project 3: Sustainable Paper Recycling SDGs -->
             <article class="bg-white dark:bg-zinc-900/80 rounded-2xl p-6 border border-slate-200 dark:border-zinc-800 shadow-sm space-y-4 hover:border-emerald-500/50 transition-all">
                 <div class="flex flex-wrap items-center justify-between gap-2">
@@ -431,13 +419,56 @@
             </article>
         </div>
 
+        <!-- ================= TAB: PUBLICATIONS ================= -->
+        <div id="tab-publications" class="tab-content hidden space-y-6">
+            <div class="border-b border-slate-200 dark:border-zinc-800 pb-4">
+                <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
+                    Publications
+                </h1>
+                <p class="text-sm text-slate-500 dark:text-zinc-400 mt-1">Peer-reviewed conference papers and international research works.</p>
+            </div>
+
+            <!-- Publication Card 1 -->
+            <article class="bg-white dark:bg-zinc-900/80 rounded-2xl p-6 border border-slate-200 dark:border-zinc-800 shadow-sm space-y-4 hover:border-teal-500/50 transition-all">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                    <span class="text-xs font-semibold px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-400 border border-emerald-500/20 flex items-center gap-1.5">
+                        <i class="fa-solid fa-circle-check"></i> Scopus Indexed Conference
+                    </span>
+                    <span class="text-xs font-mono text-slate-500 dark:text-zinc-400">2025</span>
+                </div>
+
+                <h2 class="text-xl font-bold text-slate-900 dark:text-white leading-snug">
+                    An Explainable YOLOv9 Framework for Strawberry Disease Detection
+                </h2>
+
+                <p class="text-xs font-mono text-amber-600 dark:text-amber-400 font-semibold">
+                    Mentee – Fulbright 2025 STEM Mentorship Program
+                </p>
+
+                <div class="p-3 bg-slate-50 dark:bg-zinc-800/60 rounded-xl border border-slate-200 dark:border-zinc-700/60 text-xs space-y-1">
+                    <div class="font-semibold text-slate-800 dark:text-zinc-200">
+                        <i class="fa-solid fa-building-columns text-teal-500 mr-1.5"></i> Conference:
+                    </div>
+                    <div class="text-slate-600 dark:text-zinc-300">
+                        The Eighth International Conference on Artificial Intelligence and Computational Intelligence (AICI)
+                    </div>
+                </div>
+
+                <ul class="space-y-2 text-sm text-slate-700 dark:text-zinc-300 list-disc list-inside leading-relaxed">
+                    <li>Developed Computer Vision models using PyTorch (ResNet101, Faster R-CNN, YOLOv11/v12, RT-DETR) for strawberry disease detection, achieving <strong>mAP@50 = 80.3%</strong>, <strong>Precision = 85.6%</strong>, and <strong>Recall = 86.7%</strong>.</li>
+                    <li>Applied Grad-CAM for model interpretability and TorchMetrics for quantitative performance evaluation.</li>
+                    <li>Accepted at The Eighth International Conference on Artificial Intelligence and Computational Intelligence, a Scopus indexed conference.</li>
+                </ul>
+            </article>
+        </div>
+
         <!-- ================= TAB: POSTS ================= -->
         <div id="tab-posts" class="tab-content hidden space-y-6">
             <div class="border-b border-slate-200 dark:border-zinc-800 pb-4">
                 <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
                     Blog Posts
                 </h1>
-                <p class="text-sm text-slate-500 dark:text-zinc-400 mt-1">Articles, tutorials</p>
+                <p class="text-sm text-slate-500 dark:text-zinc-400 mt-1">Articles & tutorials</p>
             </div>
 
             <div class="bg-white dark:bg-zinc-900/50 border border-dashed border-slate-300 dark:border-zinc-800 rounded-2xl p-12 text-center space-y-4">
@@ -507,35 +538,33 @@
             </div>
         </div>
 
-    <!-- ================= TAB: RESUME / CV ================= -->
-            <div id="tab-resume" class="tab-content hidden space-y-6">
-                <!-- Thanh Tiêu đề & Nút Download -->
-                <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-200 dark:border-zinc-800 pb-4 gap-4">
-                    <div>
-                        <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
-                            Curriculum Vitae / Resume
-                        </h1>
-                        <p class="text-sm text-slate-500 dark:text-zinc-400 mt-1">Lai Ly Thuy Tien — Full Academic & Technical Resume</p>
-                    </div>
-                    <a href="LaiLyThuyTien_CV.pdf" target="_blank" download="LaiLyThuyTien_CV.pdf" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-teal-500 hover:bg-teal-600 text-zinc-950 font-bold text-xs transition-colors shrink-0 shadow">
-                        <i class="fas fa-download"></i>
-                        <span>Download CV</span>
-                    </a>
+        <!-- ================= TAB: RESUME / CV ================= -->
+        <div id="tab-resume" class="tab-content hidden space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-200 dark:border-zinc-800 pb-4 gap-4">
+                <div>
+                    <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
+                        Curriculum Vitae / Resume
+                    </h1>
+                    <p class="text-sm text-slate-500 dark:text-zinc-400 mt-1">Lai Ly Thuy Tien — Full Academic & Technical Resume</p>
                 </div>
-    
-                <!-- Khung hiển thị PDF trực tiếp -->
-                <div class="w-full h-[850px] rounded-2xl overflow-hidden shadow-xl border border-slate-200 dark:border-zinc-800 bg-zinc-900">
-                    <iframe 
-                        src="LaiLyThuyTien_CV.pdf" 
-                        class="w-full h-full border-none"
-                        title="Lai Ly Thuy Tien CV">
-                        <p class="p-6 text-center text-slate-400">
-                            Trình duyệt của bạn không hỗ trợ xem PDF trực tiếp. 
-                            <a href="LaiLyThuyTien_CV.pdf" target="_blank" class="text-teal-400 underline font-semibold">Bấm vào đây để xem/tải CV</a>.
-                        </p>
-                    </iframe>
-                </div>
+                <a href="LaiLyThuyTien_CV.pdf" target="_blank" download="LaiLyThuyTien_CV.pdf" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-teal-500 hover:bg-teal-600 text-zinc-950 font-bold text-xs transition-colors shrink-0 shadow">
+                    <i class="fas fa-download"></i>
+                    <span>Download CV</span>
+                </a>
             </div>
+
+            <div class="w-full h-[850px] rounded-2xl overflow-hidden shadow-xl border border-slate-200 dark:border-zinc-800 bg-zinc-900">
+                <iframe 
+                    src="LaiLyThuyTien_CV.pdf" 
+                    class="w-full h-full border-none"
+                    title="Lai Ly Thuy Tien CV">
+                    <p class="p-6 text-center text-slate-400">
+                        Your browser does not support inline PDF viewing. 
+                        <a href="LaiLyThuyTien_CV.pdf" target="_blank" class="text-teal-400 underline font-semibold">Click here to view or download the CV</a>.
+                    </p>
+                </iframe>
+            </div>
+        </div>
 
     </main>
 
@@ -543,13 +572,11 @@
     <footer class="mt-auto border-t border-slate-200 dark:border-zinc-800 py-8 text-center text-xs text-slate-500 dark:text-zinc-500">
         <div class="max-w-4xl mx-auto px-4 space-y-4">
             
-            <!-- Brain Made / Retro Counter Box -->
             <div class="flex flex-col items-center justify-center gap-2">
                 <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-slate-200 dark:bg-zinc-800/80 border border-slate-300 dark:border-zinc-700 text-[10px] font-mono text-slate-700 dark:text-zinc-300">
                     <i class="fa-solid fa-brain text-amber-500"></i>
-                    <span>i love panda</span></span>
+                    <span>i love panda</span>
                 </div>
-                <!-- Interactive Counter -->
                 <div class="counter-box bg-white dark:bg-zinc-900 border border-slate-300 dark:border-zinc-800 px-4 py-1.5 rounded-md text-amber-600 dark:text-amber-400 font-bold text-sm tracking-widest shadow-inner">
                     Water Fairy
                 </div>
@@ -562,33 +589,40 @@
     <script>
         // Tab Switcher Logic
         function switchTab(tabId) {
-            // Hide all contents
             const contents = document.querySelectorAll('.tab-content');
             contents.forEach(el => el.classList.add('hidden'));
 
-            // Deactivate all nav buttons
             const navBtns = document.querySelectorAll('.nav-btn');
             navBtns.forEach(btn => {
                 btn.classList.remove('text-teal-600', 'dark:text-teal-400', 'font-bold', 'underline', 'decoration-teal-500', 'underline-offset-4');
             });
 
-            // Show target content
             const target = document.getElementById('tab-' + tabId);
             if (target) {
                 target.classList.remove('hidden');
             }
 
-            // Highlight target nav
             const targetNav = document.getElementById('nav-' + tabId);
             if (targetNav) {
                 targetNav.classList.add('text-teal-600', 'dark:text-teal-400', 'font-bold', 'underline', 'decoration-teal-500', 'underline-offset-4');
             }
 
-            // Scroll smoothly to top
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Enhanced Theme Toggle Logic (Dark / Bright Mode with Persistence)
+        // Mobile Menu Toggling
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn?.addEventListener('click', () => {
+            mobileMenu?.classList.toggle('hidden');
+        });
+
+        function closeMobileMenu() {
+            mobileMenu?.classList.add('hidden');
+        }
+
+        // Enhanced Theme Toggle Logic
         function updateThemeUI(isDark) {
             const icon = document.getElementById('theme-icon');
             const themeText = document.getElementById('theme-text');
@@ -614,7 +648,6 @@
             }
         }
 
-        // Initialize theme on load
         (function initTheme() {
             const savedTheme = localStorage.getItem('theme');
             const html = document.documentElement;
@@ -627,7 +660,6 @@
             }
         })();
 
-        // Default setup on page load
         window.onload = function() {
             switchTab('home');
         };
